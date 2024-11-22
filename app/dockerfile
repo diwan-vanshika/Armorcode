@@ -1,0 +1,14 @@
+# Use a lightweight Python image as base
+FROM python:3.9-slim
+
+# Set the working directory in the container
+WORKDIR /usr/src/app
+
+# Install git to clone the repository
+RUN apt-get update && apt-get install -y git && apt-get clean
+
+# Clone your GitHub repository
+RUN git clone https://github.com/diwan-vanshika/Armorcode.git .
+
+# Set the entrypoint to read and print the README file
+ENTRYPOINT ["cat", "README.md"]
